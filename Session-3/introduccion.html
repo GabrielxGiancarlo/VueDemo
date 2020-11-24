@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintaxis de Template </title>
+</head>
+<body>
+    <!-- Interpolación -->
+    <h1>Interpolacion</h1>
+    <div id="app">
+        <h2>Texto</h2>
+        <p>{{msg1}}</p>
+        <p v-once >{{msg2}}</p>
+        <button v-on:click="msg1='Nuevo Mensaje 1'">cambiar mensaje 1</button> 
+        <button @click="msg2='Nuevo Mensaje 2'">cambiar mensaje 2</button>   
+    </div>
+
+    <div id="counter">
+        <h2>HTML Puro</h2>
+        <p>{{rawHtml}}</p>
+        <p v-html="rawHtml" ></p>
+    </div>  
+
+    <div id="bind-attribute">
+        <h2>Atributos</h2>
+        <div v-bind:id="dinamicId">
+            div con Id dinamico
+        </div>
+        <button v-bind:disabled="isBoolean">Interpretacion Booleana</button>
+    </div>
+
+    <!-- Manejo de la entrada del usuario -->
+    
+    <!-- v-on irectiva para adjuntar detectores de eventos que invocan métodos en nuestras instancias -->
+    <div id="event-handling">
+        <h2>Usando Expresiones JavaScript</h2>
+        <p>{{ numerito + 1 }}</p>
+
+        <p>{{ ok ? 'Existe' : 'No existe' }}</p>
+
+        <p>{{ message.split('').reverse().join('') }}</p>
+        <h3>No admitido para multiples expresiones</h3>
+        <!-- <p>{{ var a = 1 }}</p>
+        <p>{{ if (ok) { return message } }}</p> -->
+    </div>
+    <div id="conditional-rendering">
+        <h2>Directivas</h2>
+        <span v-if="seen">Now you see me</span>
+    </div>
+    <div id="argumentsVue">
+        <h2>Argumentos</h2>
+        <a v-bind:href="url" target="blank"> href vue </a>
+        <br>
+        <a v-on:click="doSomething($event)"> href con DOM </a>
+    </div>
+    <div id="dinamicArgument">
+        <h2>Argumentos dinamicos</h2>
+        <a v-bind:[attributename]="url"> href dinamico</a>
+        <br>
+        <a v-bind:[dosomething()]="url"> href con argumento dinamico mediante funcion</a>
+    </div>
+    <div id="modifiers">
+        <h2>Modificadores</h2>
+        <form v-on:submit.prevent="onSubmit">
+            <button >enviar</button>
+        </form>
+    </div>
+    <div id="shorthands">
+        <h2>Modo abreviado</h2>
+        <h3>v-bind Abreviado</h3>
+        <a v-bind:href="url"> href dinamico </a>
+        <br>
+        <!-- abreviado -->
+        <a :href="url"> href dinamico </a>
+        <br>
+        <!-- shorthand with dynamic argument -->
+        <a :[key]="url"> argumento dinamico </a>
+        <h3>v-on Abreviado</h3>
+        <a v-on:click="doSomething"> evento click </a>
+        <br>
+        <a @click="doSomething"> evento click </a>
+        <br>
+        <!-- shorthand with dynamic argument -->
+        <a @[event]="doSomething"> evento click por argumento </a>
+    </div>
+    
+
+    <!-- Encima de nuestros propios scripts -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="syntax.js"></script>
+</body>
+</html>
