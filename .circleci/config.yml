@@ -20,3 +20,9 @@ jobs:
       - run:
           name: testing
           command: bash /.circleci/linter.sh
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test-github-super-linter
