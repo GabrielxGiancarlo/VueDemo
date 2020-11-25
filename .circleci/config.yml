@@ -19,4 +19,4 @@ jobs:
           path: ~/main
       - run:
           name: testing
-          command: bash /action/lib/linter.sh
+          command: bash /.circleci/linter.sh
