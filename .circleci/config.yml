@@ -19,7 +19,7 @@ jobs:
           path: ~/main
       - run:
           name: testing
-          command: bash /.circleci/linter.sh
+          command: bash /action/lib/linter.sh
 
 workflows:
   version: 2
